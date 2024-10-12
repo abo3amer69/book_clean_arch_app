@@ -1,4 +1,3 @@
-
 import 'package:bookcleanarch_app/Features/home/presentation/views/widgets/similar_books_section.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -15,14 +14,14 @@ class BookDetailsViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
+    return const CustomScrollView(
       slivers: [
         SliverFillRemaining(
           hasScrollBody: false,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
+            padding: EdgeInsets.symmetric(horizontal: 30),
             child: Column(
-              children: const [
+              children: [
                 CustomBookDetailsAppBar(),
                 BookDetailsSection(),
                 Expanded(

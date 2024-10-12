@@ -1,4 +1,3 @@
-
 import 'package:bookcleanarch_app/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -12,12 +11,12 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
+    return const CustomScrollView(
       slivers: [
         SliverToBoxAdapter(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
+            children: [
               Padding(
                   padding: EdgeInsets.symmetric(
                     horizontal: 30,
@@ -40,7 +39,7 @@ class HomeViewBody extends StatelessWidget {
             ],
           ),
         ),
-        const SliverFillRemaining(
+        SliverFillRemaining(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 30),
             child: BestSellerListView(),
