@@ -1,4 +1,3 @@
-
 import 'package:bookcleanarch_app/Features/search/presentation/views/widgets/search_view_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
