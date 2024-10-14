@@ -1,15 +1,17 @@
 import 'package:bookcleanarch_app/Features/home/domain/entites/book_entity.dart';
+import 'package:bookcleanarch_app/constants.dart';
+import 'package:hive/hive.dart';
 
 abstract class HomeLocalDataSource {
-List<BookEntity> fetchFeaturedBooks();
-List<BookEntity> fetchNewestBooks();
+  List<BookEntity> fetchFeaturedBooks();
+  List<BookEntity> fetchNewestBooks();
 }
 
-class omeLocalDataSourceImpl extends HomeLocalDataSource{
+class omeLocalDataSourceImpl extends HomeLocalDataSource {
   @override
   List<BookEntity> fetchFeaturedBooks() {
-    // TODO: implement fetchFeaturedBooks
-    throw UnimplementedError();
+    var box = Hive.box<BookEntity>(KFeaturedbox);
+    return box.values.toList();
   }
 
   @override
@@ -17,5 +19,4 @@ class omeLocalDataSourceImpl extends HomeLocalDataSource{
     // TODO: implement fetchNewestBooks
     throw UnimplementedError();
   }
-    
 }
