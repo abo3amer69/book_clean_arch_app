@@ -4,6 +4,7 @@ import 'package:bookcleanarch_app/Features/home/domain/entites/book_entity.dart'
 import 'package:bookcleanarch_app/Features/home/domain/repos/home_repo.dart';
 import 'package:bookcleanarch_app/core/errors/failure.dart';
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 
 class HomeRepoImol extends HomeRepo {
   final HomeRemoteDataSource homeRemoteDataSource;
@@ -22,7 +23,16 @@ class HomeRepoImol extends HomeRepo {
       books = await homeRemoteDataSource.fetchFeaturedBooks();
       return right(books);
     } catch (e) {
-      return left(Failure());
+      if (e is DioException) {
+        return left(
+          ServerFailure.fromDioException(e),
+        );
+      }
+      return left(
+        ServerFailure(
+          e.toString(),
+        ),
+      );
     }
   }
 
@@ -37,7 +47,16 @@ class HomeRepoImol extends HomeRepo {
       books = await homeRemoteDataSource.fetchNewestBooks();
       return right(books);
     } catch (e) {
-      return left(Failure());
+      if (e is DioException) {
+        return left(
+          ServerFailure.fromDioException(e),
+        );
+      }
+      return left(
+        ServerFailure(
+          e.toString(),
+        ),
+      );
     }
   }
 }
